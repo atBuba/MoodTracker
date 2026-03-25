@@ -1,0 +1,21 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+*$py.class
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+env/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Alembic
+*.db

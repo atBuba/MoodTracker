@@ -1,0 +1,20 @@
+[project]
+name = "moodchecker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.18.4",
+    "asyncpg>=0.31.0",
+    "celery>=5.6.2",
+    "fastapi>=0.135.2",
+    "httpx>=0.28.1",
+    "jose>=1.0.0",
+    "passlib>=1.7.4",
+    "pydantic>=2.12.5",
+    "python-jose>=3.5.0",
+    "python-multipart>=0.0.22",
+    "redis>=7.4.0",
+    "sqlalchemy[asyncio]>=2.0.48",
+]
