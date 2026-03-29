@@ -68,7 +68,7 @@ class TelegramCollector(BaseCollector):
         @self.dp.message(CommandStart())
         async def handle_start(message: types.Message) -> None:
             await message.answer(
-                "MoodTracker Collector bot is active. Your messages are being tracked."
+                "BurnOutDetector Collector bot is active. Your messages are being tracked."
             )
 
         @self.dp.message()

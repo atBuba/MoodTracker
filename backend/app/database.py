@@ -4,7 +4,7 @@ from sqlalchemy.orm import DeclarativeBase
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL", 
-    "postgresql+asyncpg://postgres:postgres@localhost:5432/moodtracker"
+    "postgresql+asyncpg://postgres:postgres@localhost:5432/burnoutdetector"
 )
 
 class Base(AsyncAttrs, DeclarativeBase):

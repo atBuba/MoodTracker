@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     minio_password: str = "changeme"
 
     backend_url: str = "http://backend:8000"
-    rabbitmq_url: str = "amqp://moodtracker:changeme@rabbitmq:5672/"
+    rabbitmq_url: str = "amqp://burnoutdetector:changeme@rabbitmq:5672/"
 
     prompts_dir: Path = Path(__file__).parent / "prompts"
 

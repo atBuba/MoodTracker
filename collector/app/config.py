@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     REDIS_URL: str = "redis://redis:6379/0"
 
     # RabbitMQ
-    RABBITMQ_URL: str = "amqp://moodtracker:changeme@rabbitmq:5672/"
+    RABBITMQ_URL: str = "amqp://burnoutdetector:changeme@rabbitmq:5672/"
 
     # Mock data generation interval (minutes)
     MOCK_INTERVAL_MINUTES: int = 5

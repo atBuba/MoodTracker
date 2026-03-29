@@ -13,8 +13,8 @@ from app.routers import (
 from app.utils.exceptions import AppException, app_exception_handler
 
 app = FastAPI(
-    title="MoodTracker API",
-    description="Backend Service for MoodTracker (FastAPI + Celery + PostgreSQL)",
+    title="BurnOutDetector API",
+    description="Backend Service for BurnOutDetector (FastAPI + Celery + PostgreSQL)",
     version="1.0.0",
     docs_url="/docs", 
     redoc_url="/redoc"
@@ -43,4 +43,4 @@ app.include_router(internal.router)
 
 @app.get("/health", tags=["System"])
 async def health_check():
-    return {"status": "ok", "service": "moodtracker-backend"}
+    return {"status": "ok", "service": "burnoutdetector-backend"}

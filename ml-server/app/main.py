@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="MoodTracker ML Server",
+    title="BurnOutDetector ML Server",
     version="1.0.0",
     lifespan=lifespan,
 )

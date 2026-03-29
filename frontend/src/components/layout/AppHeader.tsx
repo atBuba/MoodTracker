@@ -18,7 +18,7 @@ export default function AppHeader() {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 24px' }}>
       <Typography.Title level={4} style={{ margin: 0, color: '#fff' }}>
-        MoodTracker
+        BurnOutDetector
       </Typography.Title>
       <Space size="large">
         {user?.role !== 'employee' && <NotificationBell />}

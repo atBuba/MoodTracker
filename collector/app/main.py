@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 app = FastAPI(
-    title="MoodTracker Data Collector (Mock Mode)",
+    title="BurnOutDetector Data Collector (Mock Mode)",
     version="1.0.0",
 )
 

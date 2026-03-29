@@ -227,7 +227,7 @@ EMPLOYEE_PROFILES = {
         "trend": "declining",    # declining mood — needs attention
         "volatility": 0.10,
     },
-    "employee@moodtracker.com": {
+    "employee@burnoutdetector.com": {
         "name": "Козлова Елена",
         "position": "Software Engineer",
         "base_mood": 0.65,
@@ -353,7 +353,7 @@ async def seed():
         # ── Manager ───────────────────────────────────────────
         manager = Employee(
             full_name="Волков Дмитрий",
-            email="admin@moodtracker.com",
+            email="admin@burnoutdetector.com",
             position="Head of Engineering",
             password_hash=get_password_hash("admin123"),
             role=RoleEnum.manager,
@@ -605,8 +605,8 @@ async def seed():
         print(f"  Motivation:     {len(MOTIVATION_QUOTES) + len(MOTIVATION_SUGGESTIONS) + len(MOTIVATION_MEMES)}")
         print()
         print("  Test accounts:")
-        print("  Manager:  admin@moodtracker.com / admin123")
-        print("  Employee: employee@moodtracker.com / staff123")
+        print("  Manager:  admin@burnoutdetector.com / admin123")
+        print("  Employee: employee@burnoutdetector.com / staff123")
         print("  Employee: ivanov@company.com / staff123")
         print("  Employee: petrova@company.com / staff123")
         print("  Employee: sidorov@company.com / staff123")
