@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: moodtracker
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -74,6 +74,49 @@ services:
     command: celery -A app.celery_app beat --loglevel=info
     depends_on:
       - celery-worker
+    env_file:
+      - .env
+
+  ml-server:
+    build: ./ml-server
+    volumes:
+      - ./ml-server:/app
+    ports:
+      - "8001:8001"
+    depends_on:
+      - minio
+      - rabbitmq
+    env_file:
+      - .env
+
+  collector:
+    build: ./collector
+    volumes:
+      - ./collector:/app
+    ports:
+      - "8002:8002"
+    depends_on:
+      - backend
+      - redis
+      - rabbitmq
+    env_file:
+      - .env
+
+  collector-worker:
+    build: ./collector
+    command: celery -A app.celery_app worker --loglevel=info
+    depends_on:
+      - collector
+      - redis
+      - rabbitmq
+    env_file:
+      - .env
+
+  collector-beat:
+    build: ./collector
+    command: celery -A app.celery_app beat --loglevel=info
+    depends_on:
+      - collector-worker
     env_file:
       - .env
 

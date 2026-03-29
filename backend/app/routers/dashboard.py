@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy import func, desc
+from sqlalchemy import func, desc, cast, Numeric
 from datetime import datetime, timedelta
 
 from app.database import get_db
@@ -58,11 +58,27 @@ async def get_manager_dashboard(
 
     avg_mood = total_mood / valid_mood_count if valid_mood_count > 0 else 0.0
 
+    # Build 30-day mood trend (average across all team employees per day)
+    thirty_days_ago = datetime.utcnow().date() - timedelta(days=30)
+    trend_res = await db.execute(
+        select(
+            EmployeeState.date,
+            func.round(cast(func.avg(EmployeeState.mood_index), Numeric), 2).label("avg_mood"),
+        )
+        .where(
+            EmployeeState.employee_id.in_(emp_ids),
+            EmployeeState.date >= thirty_days_ago,
+        )
+        .group_by(EmployeeState.date)
+        .order_by(EmployeeState.date)
+    )
+    mood_trend = [{"date": str(row.date), "mood_index": float(row.avg_mood)} for row in trend_res]
+
     return success_response({
         "total_employees": len(employees),
         "avg_mood_index": round(avg_mood, 2),
         "at_risk_employees": risk_employees,
-        "mood_trend_30d": [] 
+        "mood_trend_30d": mood_trend,
     })
 
 @router.get("/employee")
